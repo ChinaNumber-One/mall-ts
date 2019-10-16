@@ -1,5 +1,5 @@
 {
-  "name": "mall-ts",
+  "name": "Ming'mall",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,5 +27,9 @@
     "typescript": "^3.4.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/ChinaNumber-One/mall-ts.git",
+  "author": "vxpublic@163.com",
+  "license": "MIT"
 }
