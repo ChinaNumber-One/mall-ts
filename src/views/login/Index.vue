@@ -25,10 +25,12 @@
       <van-field
         v-model='password'
         size='large'
-        type='password'
+        :type='pwdType'
         placeholder='密码'
         class='border-bottom input'
+        :right-icon="rightIcon"
         clearable
+        @click-right-icon="pwdRightIconClick"
       >
         <i class='iconfont icon' slot='left-icon'>&#xe635;</i>
       </van-field>
@@ -40,23 +42,26 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { phoneReg } from '@/utils/regRxp';
+
 import { User } from '@/api';
-@Component
+@Component({
+  name: 'loginIndex',
+})
 export default class LoginIndex extends Vue {
   private userPhone: string = '';
   private password: string = '';
-  private show: boolean = false;
-  private phoneReg: RegExp = /^1[3-9]\d{9}$/;
-  private redirectPath = '/mine';
-  // private btnDisable: boolean = true;
+  private rightIcon: string = 'closed-eye';
+  private pwdType: string = 'password';
+  private redirectPath: string = '/mine';
   public mounted() {
-    if (this.$route.query.redirect) {
+    if (this.$route.query.redirect && typeof this.$route.query.redirect === 'string') {
       this.redirectPath = this.$route.query.redirect;
     }
   }
   private validUserPhone() {
     if (!this.userPhone.trim()) { return; }
-    if (!this.phoneReg.test(this.userPhone)) {
+    if (!phoneReg.test(this.userPhone)) {
       this.$notify({ type: 'danger', message: '手机号格式错误！' });
     }
   }
@@ -65,6 +70,15 @@ export default class LoginIndex extends Vue {
   }
   private onClickRight() {
     this.$router.push('./register');
+  }
+  private pwdRightIconClick() {
+    if (this.rightIcon === 'closed-eye') {
+      this.rightIcon = 'eye-o';
+      this.pwdType = 'text';
+    } else {
+      this.rightIcon = 'closed-eye';
+      this.pwdType = 'password';
+    }
   }
   private async login() {
     if (!this.userPhone) {
@@ -83,7 +97,7 @@ export default class LoginIndex extends Vue {
       if (res.data.status === 2) {
         const token: string = res.data.token;
         localStorage.setItem('ming_token', token);
-        this.$toast({message: '登录成功', type: 'success', onClose: () => {
+        this.$toast({message: '登录成功', type: 'success', duration: 2000, onClose: () => {
           this.$router.push(this.redirectPath);
         }});
       } else {
@@ -99,10 +113,6 @@ export default class LoginIndex extends Vue {
 .home {
   background: #fff;
   min-height: 100vh;
-  .van-nav-bar .van-icon,
-  .van-nav-bar__text {
-    color: #000;
-  }
   .content {
     font-size: 30px;
     padding: 0 0.4rem;

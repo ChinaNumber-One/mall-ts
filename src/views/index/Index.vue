@@ -1,17 +1,21 @@
 <template>
   <div class="home">
-    <!-- {{res}} -->
+    <van-notice-bar
+      text="代码写出来是给别人看的！代码写出来是给别人看的！代码写出来是给别人看的！代码写出来是给别人看的！代码写出来是给别人看的！代码写出来是给别人看的！"
+      color="#1989fa"
+      background="#ecf9ff"
+      left-icon="volume-o"
+    />
   </div>
 </template>
 
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({
+  name: 'index',
+})
 export default class Index extends Vue {
-  private res: any = '';
-  private async mounted() {
-  //  this.res = await this.$http.get('http://127.0.0.1:5000/api/user/test');
-  }
+
 }
 </script>

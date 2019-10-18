@@ -1,7 +1,6 @@
 {
-  "name": "Ming'mall",
+  "name": "mall-ts",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,8 +11,8 @@
     "core-js": "^2.6.5",
     "vant": "^2.2.7",
     "vue": "^2.6.10",
-    "vue-axios": "^2.1.5",
     "vue-class-component": "^7.0.2",
+    "vue-cropper": "^0.4.9",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -27,9 +26,5 @@
     "typescript": "^3.4.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.10"
-  },
-  "main": "index.js",
-  "repository": "https://github.com/ChinaNumber-One/mall-ts.git",
-  "author": "vxpublic@163.com",
-  "license": "MIT"
+  }
 }

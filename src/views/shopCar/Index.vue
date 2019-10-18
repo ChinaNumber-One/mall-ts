@@ -6,6 +6,8 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({
+  name: 'shopCarIndex',
+})
 export default class ShopCarIndex extends Vue {}
 </script>

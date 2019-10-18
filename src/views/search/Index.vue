@@ -6,7 +6,9 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({
+  name: 'searchIndex',
+})
 export default class SearchIndex extends Vue {}
 </script>
 

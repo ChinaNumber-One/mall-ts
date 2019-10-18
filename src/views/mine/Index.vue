@@ -2,7 +2,7 @@
   <div class="home">
     <div class="header">
       <div class="userInfo">
-        <img src="@/assets/defaultUserImg.png" alt="默认头像" />
+        <img :src="userAvatar" alt="默认头像" />
         <p class="userName" @click="login">{{userName}}</p>
       </div>
       <div class="orderInfo">
@@ -57,29 +57,36 @@
           </div>
           <van-icon name="arrow" />
         </li>
-        <li @click='logout'>
+        <router-link to="/mine/setting" tag='li'>
           <div>
             <van-icon name="setting-o" size="20px" />
-            <span>账号设置</span>
+            <span>信息修改</span>
           </div>
           <van-icon name="arrow" />
-        </li>
+        </router-link>
       </ul>
     </div>
-    <div class="footer"></div>
+    <PageLoading v-show='showLoading' />
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import PageLoading from '@/components/pageLoading.vue';
 import { User } from '@/api/index';
-// import axios from 'axios';
-@Component
+@Component({
+  name: 'mineIndex',
+  components: {
+    PageLoading,
+  },
+})
 export default class MineIndex extends Vue {
-  private userName = '请先登录';
-  // public async mounted() {}
+  private userName: string = '请先登录';
+  private showLoading: boolean = false;
+  private userAvatar: string = 'https://static.wordming.cn/img/shuai.jpg';
   private created() {
     if (localStorage.getItem('ming_token')) {
+      this.showLoading = true;
       this.getUserInfo();
     }
   }
@@ -91,12 +98,9 @@ export default class MineIndex extends Vue {
   private async getUserInfo() {
     const userInfo = await User.getUserInfo();
     this.userName = userInfo.data.userInfo.name;
+    this.userAvatar = userInfo.data.userInfo.avatar;
+    this.showLoading = false;
   }
-  private logout() {
-    localStorage.removeItem('ming_token');
-    this.userName = '请先登录';
-  }
-
 }
 </script>
 
@@ -123,6 +127,7 @@ export default class MineIndex extends Vue {
         font-size: 18px;
         color: #fff;
         font-weight: 500;
+        margin-left: .14rem;
       }
     }
     .orderInfo {

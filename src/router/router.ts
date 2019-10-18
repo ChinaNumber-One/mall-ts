@@ -61,5 +61,13 @@ export default new Router({
       },
       component: () => import('../views/register/Index.vue'),
     },
+    {
+      path: '/mine/setting',
+      name: 'settingIndex',
+      meta: {
+        title: '设置',
+      },
+      component: () => import('../views/mine/Setting.vue'),
+    },
   ],
 });

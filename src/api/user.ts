@@ -1,13 +1,21 @@
-import Axios from 'axios';
-
+import ajax from '@/axios/interceptors';
 export default {
   register(param: object): any {
-    return Axios.post('https://mall.wordming.cn/api/user/register', param);
+    return ajax.post('/api/user/register', param);
   },
   login(param: object): any {
-    return Axios.post('https://mall.wordming.cn/api/user/login', param);
+    return ajax.post('/api/user/login', param);
   },
   getUserInfo(): any {
-    return Axios.get('https://mall.wordming.cn/api/user/current');
+    return ajax.get('/api/user/current');
+  },
+  updateUserInfo(param: object): any {
+    return ajax.post('/api/user/update', param);
+  },
+  changeUserPhone(param: object): any {
+    return ajax.post('/api/user/changePhone', param);
+  },
+  changeUserPassword(param: object): any {
+    return ajax.post('/api/user/changePassword', param);
   },
 };

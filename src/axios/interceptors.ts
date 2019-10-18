@@ -1,6 +1,11 @@
 import axios from 'axios';
 import router from '@/router/router';
-axios.interceptors.request.use((config: any) => {
+import { Notify } from 'vant';
+const ajax = axios.create({
+  baseURL: 'https://api.wordming.cn',
+  // baseURL: 'http://127.0.0.1:5000',
+});
+ajax.interceptors.request.use((config: any) => {
   if (localStorage.getItem('ming_token')) {
     config.headers.Authorization = localStorage.getItem('ming_token');
   } else {
@@ -11,19 +16,23 @@ axios.interceptors.request.use((config: any) => {
   return Promise.reject(error);
 });
 
-axios.interceptors.response.use((response: any) => {
+ajax.interceptors.response.use((response: any) => {
   return response;
 }, (error: any) => {
   if (error.response) {
     switch (error.response.status) {
       case 401:
-        router.replace({
-          path: './login',
-          query: {
-            redirect: router.currentRoute.fullPath,
-          },
-        });
+        Notify({ type: 'danger', message: '登录过期', duration: 2000 , onClose: () => {
+          return router.replace({
+            path: '/login',
+            query: {
+              redirect: router.currentRoute.fullPath,
+            },
+          });
+        }});
     }
   }
   return Promise.reject(error.response.data);
 });
+
+export default ajax;

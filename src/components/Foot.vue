@@ -2,7 +2,7 @@
   <div>
     <van-tabbar v-model="active" safe-area-inset-bottom @change='changeTab'>
       <van-tabbar-item icon="wap-home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search">搜索</van-tabbar-item>
+      <van-tabbar-item icon="apps-o">分类</van-tabbar-item>
       <van-tabbar-item icon="shopping-cart-o">购物车</van-tabbar-item>
       <van-tabbar-item icon="user-o">我的</van-tabbar-item>
     </van-tabbar>
@@ -29,13 +29,13 @@ export default class Foot extends Vue {
   }
   private changeTab(index: number) {
     if (index === 0) {
-        this.$router.push('/');
+        this.$router.replace('/');
       } else if (index === 1) {
-        this.$router.push('/search');
+        this.$router.replace('/search');
       } else if (index === 2) {
-        this.$router.push('/shopCar');
+        this.$router.replace('/shopCar');
       } else if (index === 3) {
-        this.$router.push('/mine');
+        this.$router.replace('/mine');
       }
   }
 }

@@ -9,6 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Foot from '../components/Foot.vue';
 @Component({
+  name: 'home',
   components: {
     Foot,
   },
