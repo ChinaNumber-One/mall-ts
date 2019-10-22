@@ -35,18 +35,24 @@
         <i class='iconfont icon' slot='left-icon'>&#xe635;</i>
       </van-field>
       <p class='forgetPwd'>忘记密码</p>
-      <van-button type='info' class='loginBtn' size='large' @click='login'>登录</van-button>
+      <van-button type='danger' class='loginBtn' size='large' @click='login'>登录</van-button>
     </div>
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { NavBar, Field, Button} from 'vant';
 import { phoneReg } from '@/utils/regRxp';
 
 import { User } from '@/api';
 @Component({
   name: 'loginIndex',
+  components: {
+    [NavBar.name]: NavBar,
+    [Field.name]: Field,
+    [Button.name]: Button,
+  },
 })
 export default class LoginIndex extends Vue {
   private userPhone: string = '';
@@ -120,7 +126,7 @@ export default class LoginIndex extends Vue {
       display: block;
       height: 1.8rem;
       width: 1.8rem;
-      background-color: #1989fa;
+      background-color: #e7525c;
       border-radius: 0.9rem;
       padding: 0.1rem;
       margin: 0.6rem auto;

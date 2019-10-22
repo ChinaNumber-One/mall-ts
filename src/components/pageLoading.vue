@@ -1,15 +1,20 @@
 <template>
   <div>
     <div class='page'>
-      <van-loading  color="#1989fa" />
+      <van-loading size="1rem"  color="#e7525c" />
     </div>
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { Loading } from 'vant';
+
 @Component({
   name: 'pageLoading',
+  components: {
+    [Loading.name]: Loading,
+  },
 })
 export default class PageLoading extends Vue {}
 </script>
@@ -25,5 +30,6 @@ export default class PageLoading extends Vue {}
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 </style>

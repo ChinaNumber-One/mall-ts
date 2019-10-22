@@ -5,9 +5,14 @@ import store from './store/store';
 import '@/style/reset.css';
 import '@/style/border.css';
 import '@/assets/fonts/iconfont.css';
-import Vant from 'vant';
-import 'vant/lib/index.css';
-Vue.use(Vant);
+// import Vant from 'vant';
+// import 'vant/lib/index.css';
+// Vue.use(Vant);
+import { AddressList, AddressEdit } from 'vant';
+
+Vue.use(AddressList);
+Vue.use(AddressEdit);
+
 
 Vue.config.productionTip = false;
 

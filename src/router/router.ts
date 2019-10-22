@@ -69,5 +69,21 @@ export default new Router({
       },
       component: () => import('../views/mine/Setting.vue'),
     },
+    {
+      path: '/mine/address',
+      name: 'addressList',
+      meta: {
+        title: '管理收货地址',
+      },
+      component: () => import('../views/mine/MyAddress.vue'),
+    },
+    {
+      path: '/mine/address/editor',
+      name: 'addressEditor',
+      meta: {
+        title: '编辑收货地址',
+      },
+      component: () => import('../views/mine/EditorAddress.vue'),
+    },
   ],
 });

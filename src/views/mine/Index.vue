@@ -29,13 +29,13 @@
         </ul>
       </div>
       <ul class="pageContent">
-        <li>
+        <router-link to="/mine/address" tag='li'>
           <div>
             <van-icon name="location-o" size="20px" />
             <span>管理收货地址</span>
           </div>
           <van-icon name="arrow" />
-        </li>
+        </router-link>
         <li>
           <div>
             <van-icon name="send-gift-o" size="20px" />
@@ -72,12 +72,14 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { Icon } from 'vant';
 import PageLoading from '@/components/pageLoading.vue';
 import { User } from '@/api/index';
 @Component({
   name: 'mineIndex',
   components: {
     PageLoading,
+    [Icon.name]: Icon,
   },
 })
 export default class MineIndex extends Vue {
@@ -112,15 +114,16 @@ export default class MineIndex extends Vue {
     padding: 0.1rem;
     width: 100%;
     height: 3.5rem;
-    background: #1989fa;
+    background: #e7525c;
     .userInfo {
       display: flex;
       align-items: center;
       img {
         width: 1.2rem;
         height: 1.2rem;
-        border-radius: 0.6rem;
+        border-radius: 0.1rem;
         margin: 8px;
+        margin-left: 24px;
         // border: 1px solid #fff;
       }
       .userName {

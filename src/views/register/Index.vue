@@ -75,7 +75,7 @@
       >
         <i class='iconfont icon' slot='left-icon'>&#xe635;</i>
       </van-field>
-      <van-button type='info' class='loginBtn' size='large' @click='register'>注册</van-button>
+      <van-button type='danger' class='loginBtn' size='large' @click='register'>注册</van-button>
     </div>
     <CutImg :img="orginAvatar" :show="showDialog" @closeCutImg="closeCutImg" @getImgData='getImgData'/>
   </div>
@@ -83,6 +83,7 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { Icon, NavBar, Uploader, Field, Button} from 'vant';
 import CutImg from '@/components/cutImg.vue';
 import { nameReg, phoneReg, passwordReg } from '@/utils/regRxp';
 import { User } from '@/api';
@@ -90,6 +91,11 @@ import { User } from '@/api';
   name: 'registerIndex',
   components: {
     CutImg,
+    [Icon.name]: Icon,
+    [NavBar.name]: NavBar,
+    [Uploader.name]: Uploader,
+    [Field.name]: Field,
+    [Button.name]: Button,
   },
 })
 export default class LoginIndex extends Vue {
@@ -217,7 +223,7 @@ export default class LoginIndex extends Vue {
   position: relative;
   min-height: 100vh;
   .avatarBox {
-    background: #1989fa;
+    background: #e7525c;
     display: flex;
     align-items: center;
     justify-content: center;

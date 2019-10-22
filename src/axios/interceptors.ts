@@ -3,7 +3,7 @@ import router from '@/router/router';
 import { Notify } from 'vant';
 const ajax = axios.create({
   baseURL: 'https://api.wordming.cn',
-  // baseURL: 'http://127.0.0.1:5000',
+  // baseURL: 'http://192.168.2.115:5000',
 });
 ajax.interceptors.request.use((config: any) => {
   if (localStorage.getItem('ming_token')) {
@@ -32,7 +32,7 @@ ajax.interceptors.response.use((response: any) => {
         }});
     }
   }
-  return Promise.reject(error.response.data);
+  return Promise.reject(error);
 });
 
 export default ajax;

@@ -6,7 +6,7 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     >
-      <van-button type="primary" slot="right" size="small">使用</van-button>
+      <van-button type="danger" slot="right" size="small">使用</van-button>
     </van-nav-bar>
     <div class="cropperBox">
       <vue-cropper autoCrop :img="img" :info="false" :outputSize='0.2' ref="cropper" centerBox fixed  :fixedNumber="[1,1]"/>
@@ -16,10 +16,13 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop} from 'vue-property-decorator';
+import { NavBar, Button } from 'vant';
 import { VueCropper } from 'vue-cropper';
 @Component({
   components: {
     VueCropper,
+    [NavBar.name]: NavBar,
+    [Button.name]: Button,
   },
 })
 export default class CutImg extends Vue {

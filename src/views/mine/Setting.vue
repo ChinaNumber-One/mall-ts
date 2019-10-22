@@ -169,6 +169,7 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import { NavBar, Uploader, Icon, Dialog, Field, RadioGroup, Radio, Popup, DatetimePicker, Area } from 'vant';
 import CutImg from '@/components/cutImg.vue';
 import PageLoading from '@/components/pageLoading.vue';
 import province_list from '@/utils/citys';
@@ -179,6 +180,16 @@ import { User } from '@/api/index';
   components: {
     CutImg,
     PageLoading,
+    [NavBar.name]: NavBar,
+    [Uploader.name]: Uploader,
+    [Dialog.Component.name]: Dialog.Component,
+    [Icon.name]: Icon,
+    [Field.name]: Field,
+    [RadioGroup.name]: RadioGroup,
+    [Radio.name]: Radio,
+    [Popup.name]: Popup,
+    [DatetimePicker.name]: DatetimePicker,
+    [Area.name]: Area,
   },
 })
 export default class SettingIndex extends Vue {
