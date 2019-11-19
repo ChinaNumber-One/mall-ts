@@ -8,7 +8,7 @@
       </div>
       <van-icon name="user-o" size=".6rem" @click='goMinePage'/>
     </div>
-    <van-swipe style="margin-top:-1px;">
+    <van-swipe :autoplay="5000" style="margin-top:-1px;">
       <van-swipe-item v-for="(image, index) in images" :key="index" class='swiperItem'>
         <div class='swiperItemBgHalf'></div>
         <img :src="image" alt="">
@@ -28,13 +28,36 @@
       color="#333">
       <i slot="left-icon" class="noticeIconText">商城早报</i>
     </van-notice-bar>
+    <section>
+      <div class='title'>
+        <p>今日推荐</p>
+        <span>优选好货，低价热销</span>
+      </div>
+      <div class='goodList'>
+        <div class='goodItem'>
+          <img src="https://static.wordming.cn/img/goods_cover/appleCover.jpg" alt="" class='goodCoverImg'>
+          <div class='goodInfo'>
+            <p class='goodTitle'>当季新鲜水果烟台红富士苹果10斤包邮</p>
+            <p>
+              <span class='currentPrice'>¥ 49.80</span>
+              <span class='originalPrice'>¥ 99.80</span>
+            </p>
+            <p>
+              <span class='sendPrice'>免运费</span>
+              <span class='payNum'>397人付款</span>
+              <span class='deliveryAddress'>烟台</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-import { Icon, Swipe, SwipeItem, Grid, GridItem, Button, NoticeBar} from 'vant';
+import { Icon, Swipe, SwipeItem, Grid, GridItem, Button, NoticeBar, Card } from 'vant';
 @Component({
   name: 'index',
   components: {
@@ -45,6 +68,7 @@ import { Icon, Swipe, SwipeItem, Grid, GridItem, Button, NoticeBar} from 'vant';
     [GridItem.name]: GridItem,
     [Button.name]: Button,
     [NoticeBar.name]: NoticeBar,
+    [Card.name]: Card,
   },
 })
 export default class Index extends Vue {
@@ -52,37 +76,48 @@ export default class Index extends Vue {
     'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/46ea854a06fe30bb930a3b4b426e8c08.jpg?thumb=1&w=720&h=360',
     'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9e8be30d7e34410bf2cedabff54875cf.jpg?thumb=1&w=720&h=360',
   ];
-  private gridList = [{
-    name: '甄选鲜果',
-    iconText: '11',
-  }, {
-    name: '营养食材',
-    iconText: '·',
-  }, {
-    name: '禽蛋肉类',
-    iconText: '11',
-  }, {
-    name: '水产海鲜',
-    iconText: '预',
-  }, {
-    name: '粮油调味',
-    iconText: '售',
-  }, {
-    name: '休闲零食',
-    iconText: '低',
-  }, {
-    name: '家庭副食',
-    iconText: '价',
-  }, {
-    name: '酒饮冲调',
-    iconText: '提',
-  }, {
-    name: '日用百货',
-    iconText: '前',
-  }, {
-    name: '更多',
-    iconText: '享',
-  }];
+  private gridList = [
+    {
+      name: '甄选鲜果',
+      iconText: '11',
+    },
+    {
+      name: '营养食材',
+      iconText: '·',
+    },
+    {
+      name: '禽蛋肉类',
+      iconText: '11',
+    },
+    {
+      name: '水产海鲜',
+      iconText: '预',
+    },
+    {
+      name: '粮油调味',
+      iconText: '售',
+    },
+    {
+      name: '休闲零食',
+      iconText: '低',
+    },
+    {
+      name: '家庭副食',
+      iconText: '价',
+    },
+    {
+      name: '酒饮冲调',
+      iconText: '提',
+    },
+    {
+      name: '日用百货',
+      iconText: '前',
+    },
+    {
+      name: '更多',
+      iconText: '享',
+    },
+  ];
   private goMinePage() {
     this.$router.replace('/mine');
   }
@@ -157,6 +192,64 @@ export default class Index extends Vue {
     line-height: .52rem;
     font-size: 18px;
     margin-bottom: .16rem;
+  }
+  section {
+    .title {
+      background: orange;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      padding: .2rem;
+      p {
+        font-size: 14px;
+        margin-right: .2rem;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+    .goodList {
+      background: #f5f5f5;
+      .goodItem {
+        background: #fff;
+        margin: .2rem;
+        display: flex;
+        .goodCoverImg {
+          height: 100px;
+          width: 100px;
+        }
+        .goodInfo {
+          flex:1;
+          padding:0 .14rem;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          p:last-child {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+          }
+          .goodTitle {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            color: #333;
+          }
+          .currentPrice {
+            font-size: 16px;
+            color: #eb5211;
+          }
+          .originalPrice {
+            font-size: 12px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: .1rem;
+          }
+        }
+      }
+    }
   }
 }
 </style>

@@ -4,7 +4,7 @@ module.exports = {
       less: {
         modifyVars: {
           red: '#e7525c',
-          blue: '#2acfe0',
+          blue: '#e7525c',
           orange: '#eaaa1a',
           'text-color': '#000'
         }
